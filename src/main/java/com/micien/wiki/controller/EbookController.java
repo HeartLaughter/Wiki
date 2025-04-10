@@ -1,7 +1,8 @@
 package com.micien.wiki.controller;
 
-import com.micien.wiki.domain.Ebook;
+import com.micien.wiki.req.EbookReq;
 import com.micien.wiki.resp.CommonResp;
+import com.micien.wiki.resp.EbookResp;
 import com.micien.wiki.service.EbookService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +18,9 @@ class EbookController {
     private EbookService ebookService;
 
     @RequestMapping("/list")
-    public CommonResp list(){
-        CommonResp<List<Ebook>> resp = new CommonResp<>();
-        List<Ebook> list = ebookService.list();
+    public CommonResp list(EbookReq req){
+        CommonResp<List<EbookResp>> resp = new CommonResp<>();
+        List<EbookResp> list = ebookService.list(req);
         resp.setContent(list);
         return resp;
     }
